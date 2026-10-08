@@ -1,99 +1,165 @@
-/* Reset básico de estilos */
 * {
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    background-color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+header {
+    margin: 44px 0px 144px 76px;
+
 }
 
-/* Container Principal em Grid ou Flexbox */
-.hero-container {
-    display: flex;
-    max-width: 1200px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-}
-
-/* Área da Imagem */
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-/* Área do Texto */
-.hero-content {
-    flex: 1;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #4a4a4a;
+.link-header {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #989D9c;
     text-transform: uppercase;
-    margin-bottom: 5px;
+    cursor: pointer;
+    margin-right: 23px;
 }
 
-.hero-content h2 {
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: #7a7a7a;
-    margin-bottom: 25px;
+.button-header {
+    background-color: #665AE1;
+    border-radius: 20.5px;
+    width: 130px;
+    height: 41px;
+    border: none;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
-.hero-content p {
-    font-size: 1.1rem;
-    color: #999999;
-    line-height: 1.6;
-    margin-bottom: 35px;
-    max-width: 500px;
-}
 
-/* Botão Explore */
-.btn-explore {
+.img-logo {
+    width: 568px;
+    height: 500px;
+    margin-left: 125px;
     display: inline-block;
-    background-color: #a3e635; /* Tom de verde/limão do botão */
+}
+
+section {
+    margin-left: 86px;
+    display: inline-block
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 100px;
+    line-height: 122px;
+    color: #515151
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 58px;
+    line-height: 71px;
+    color: #515151
+}
+
+p {
+    margin-top: 32px;
+    margin-bottom: 65px;
+    width: 900px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #848484
+}
+
+.button-main {
+
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
     color: #000000;
-    text-decoration: none;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #ADFF00;
     border-radius: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 239px;
+    height: 64px
 }
 
-.btn-explore:hover {
-    background-color: #8ade1b;
-    transform: translateY(-2px);
-}
+@media screen and (max-width: 1030px) {
 
-/* Responsividade para telas menores (Celulares) */
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
+    header {
+        display: none;
     }
 
-    .hero-content p {
-        margin: 0 auto 30px auto;
+
+    .img-logo {
+        width: auto;
+        height: 70%;
+        margin: 200px auto;
+        display: block;
+        position: static;
+        max-width: 90%;
+    }
+
+    section {
+        display: block;
+        margin: 0px;
+    }
+
+    h1 {
+        font-size: 75px;
+        font-weight: 900;
+        line-height: 60.95px;
+        text-align: center;
+    }
+
+    h2 {
+        font-weight: 500;
+        font-size: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin: 10px;
+    }
+
+    p {
+        display: none;
+    }
+
+    button {
+        margin: 0 auto;
+        display: block;
+        font-weight: 700;
+    }
+}
+@media screen and (max-width: 900px) {
+    .img-logo {
+        width: auto;
+        height: 40%;
+        margin: 60px auto;
+        display: block;
+        position: static;
+        max-width: 75%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .img-logo {
+        width: auto;
+        height: 50%;
+        margin: 50px auto;
+        display: block;
+        position: static;
+        max-width: 80%;
+    }
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 30px;
+        line-height: 36.57px;
+        
     }
 }
