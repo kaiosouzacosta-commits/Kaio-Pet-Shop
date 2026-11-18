@@ -7,36 +7,254 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <title>Kaio Pet Shop</title>
 </head>
 
 <body>
     <header>
-        <a class="link-header">Home</a>
-        <a class="link-header">Sobre nós</a>
-        <a class="link-header">Produtos</a>
-        <a class="link-header">Serviços</a>
-        <a class="link-header">Contato</a>
-        <button class="button-header">Entrar</button>
+        <div class="header-inner">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
+            <nav class="nav-links" id="nav-links">
+                <a href="#home" class="link-header active" data-page="home">Home</a>
+                <a href="#sobre" class="link-header" data-page="sobre">Sobre nós</a>
+                <a href="#produtos" class="link-header" data-page="produtos">Produtos</a>
+                <a href="#servicos" class="link-header" data-page="servicos">Serviços</a>
+                <a href="#contato" class="link-header" data-page="contato">Contato</a>
+            </nav>
+            <div class="header-right">
+                <button type="button" class="cart-badge" id="header-cart" data-page="produtos">Carrinho (0)</button>
+                <button type="button" class="button-header" id="header-auth-btn" data-page="entrar">Entrar</button>
+            </div>
+        </div>
     </header>
-    <main>
-        <img src="./img/we-care.png" alt="we-care-logo" class="img-logo">
-        <section>
+
+    <main id="page-home" class="home-main page-view active">
+        <img src="./img/we-care.png" onerror="this.onerror=null;this.src='https://images.dog.ceo/breeds/retriever-golden/n02099601_3004.jpg';" alt="we-care-logo" class="img-logo">
+        <section class="home-section">
             <h1>Cuidamos</h1>
             <h2>Do seu pet</h2>
             <p>Temos a melhor estrutura da região para receber o seu Pet com o melhor conforto possível em todos os serviços.
-            <br>
-            <br>Prezamos por um ótimo atendimento para mantermos uma relação excelente.
-            <br>
-            <br>Nossos profissionais são extremamente qualificados para atender da melhor forma possível você e seu Pet.
+                <br><br>Prezamos por um ótimo atendimento para mantermos uma relação excelente.
+                <br><br>Nossos profissionais são extremamente qualificados para atender da melhor forma possível você e seu Pet.
             </p>
-            <button class="button-main">Saiba mais</button>
+            <button type="button" class="button-main" data-page="servicos">Saiba mais</button>
         </section>
-
     </main>
 
+    <section id="page-sobre" class="page-container page-view">
+        <div class="page-header">
+            <h1>Sobre Nós</h1>
+            <h2>Amor e cuidado em cada detalhe</h2>
+        </div>
+
+        <div class="sobre-content">
+            <div class="sobre-card">
+                <h3>Nossa História</h3>
+                <p>O Kaio Pet Shop nasceu com a missão de oferecer atendimento veterinário, estética animal e produtos de alta qualidade em um ambiente acolhedor e seguro.</p>
+                <p>Contamos com profissionais certificados, equipamentos modernos e monitoramento constante para garantir o bem-estar físico e emocional do seu pet.</p>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <strong>+5.000</strong>
+                    <span>Pets Atendidos</span>
+                </div>
+                <div class="stat-card">
+                    <strong>10 Anos</strong>
+                    <span>De Experiência</span>
+                </div>
+                <div class="stat-card">
+                    <strong>24h</strong>
+                    <span>Suporte Veterinário</span>
+                </div>
+            </div>
+
+            <div class="api-gallery-section">
+                <h3>Clientes Felizes</h3>
+                <div class="cards-grid" id="sobre-api-gallery">
+                    <p class="loading-text">Carregando fotos da API...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-produtos" class="page-container page-view">
+        <div class="page-header">
+            <h1>Produtos</h1>
+            <h2>Tudo para a saúde e diversão do seu pet</h2>
+        </div>
+
+        <div class="filter-bar">
+            <button type="button" class="filter-btn active" data-category="todos">Todos</button>
+            <button type="button" class="filter-btn" data-category="racao">Rações</button>
+            <button type="button" class="filter-btn" data-category="brinquedos">Brinquedos</button>
+            <button type="button" class="filter-btn" data-category="higiene">Higiene</button>
+        </div>
+
+        <div class="cards-grid" id="produtos-lista">
+            <p class="loading-text">Carregando catálogo via API...</p>
+        </div>
+
+        <div class="carrinho-section" id="carrinho-box">
+            <h3>Seu Carrinho de Compras</h3>
+            <div id="carrinho-itens"></div>
+            <div class="carrinho-footer">
+                <span class="carrinho-total" id="carrinho-total">Total: R$ 0,00</span>
+                <button type="button" class="button-main" id="finalizar-pedido-btn">Finalizar Pedido</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-servicos" class="page-container page-view">
+        <div class="page-header">
+            <h1>Serviços</h1>
+            <h2>Atendimento especializado e agendamento online</h2>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Banho & Tosa</h3>
+                <p>Banho completo com produtos hipoalergênicos, corte de unhas, limpeza de ouvidos e tosa higiênica ou na tesoura.</p>
+                <span class="price">A partir de R$ 65,00</span>
+                <button type="button" class="btn-select-service" data-service="Banho & Tosa">Selecionar Serviço</button>
+            </div>
+
+            <div class="card">
+                <h3>Consulta Veterinária</h3>
+                <p>Avaliação clínica completa, exames preventivos e orientação nutricional com veterinários especializados.</p>
+                <span class="price">R$ 120,00</span>
+                <button type="button" class="btn-select-service" data-service="Consulta Veterinária">Selecionar Serviço</button>
+            </div>
+
+            <div class="card">
+                <h3>Vacinação</h3>
+                <p>Aplicação de vacinas importadas (V8, V10, Antirrábica e Gripe) com carteira de vacinação atualizada.</p>
+                <span class="price">A partir de R$ 85,00</span>
+                <button type="button" class="btn-select-service" data-service="Vacinação">Selecionar Serviço</button>
+            </div>
+
+            <div class="card">
+                <h3>Hotelzinho & Creche</h3>
+                <p>Hospedagem segura, climatizada e com recreação monitorada durante todo o dia.</p>
+                <span class="price">R$ 95,00 / dia</span>
+                <button type="button" class="btn-select-service" data-service="Hotelzinho & Creche">Selecionar Serviço</button>
+            </div>
+        </div>
+
+        <div class="form-box" id="agendamento-box">
+            <h3>Agendar Horário</h3>
+            <form id="form-agendamento">
+                <label for="servico-select">Serviço</label>
+                <select id="servico-select" required>
+                    <option value="Banho & Tosa">Banho & Tosa</option>
+                    <option value="Consulta Veterinária">Consulta Veterinária</option>
+                    <option value="Vacinação">Vacinação</option>
+                    <option value="Hotelzinho & Creche">Hotelzinho & Creche</option>
+                </select>
+
+                <label for="raca-select">Raça do Pet</label>
+                <select id="raca-select" required>
+                    <option value="">Carregando raças...</option>
+                </select>
+
+                <label for="pet-nome">Nome do Pet</label>
+                <input type="text" id="pet-nome" placeholder="Ex: Thor" required>
+
+                <label for="tutor-nome">Seu Nome</label>
+                <input type="text" id="tutor-nome" placeholder="Seu nome completo" required>
+
+                <label for="agendamento-data">Data</label>
+                <input type="date" id="agendamento-data" required>
+
+                <label for="agendamento-hora">Horário</label>
+                <input type="time" id="agendamento-hora" required>
+
+                <button type="submit" class="button-main btn-block">Confirmar Agendamento</button>
+            </form>
+            <div id="agendamentos-lista" class="agendamentos-lista"></div>
+        </div>
+    </section>
+
+    <section id="page-contato" class="page-container page-view">
+        <div class="page-header">
+            <h1>Contato</h1>
+            <h2>Fale conosco ou consulte entrega pelo CEP</h2>
+        </div>
+
+        <div class="contato-grid">
+            <div class="sobre-card">
+                <h3>Informações da Loja</h3>
+                <p><strong>Endereço:</strong> Av. Principal, 1000 - Centro</p>
+                <p><strong>Telefone:</strong> (11) 99999-8888</p>
+                <p><strong>E-mail:</strong> contato@kaiopetshop.com.br</p>
+                <p><strong>Horário:</strong> Segunda a Sábado, das 08h às 20h</p>
+            </div>
+
+            <div class="form-box">
+                <h3>Envie sua Mensagem</h3>
+                <form id="form-contato">
+                    <label for="contato-nome">Nome</label>
+                    <input type="text" id="contato-nome" placeholder="Seu nome" required>
+
+                    <label for="contato-email">E-mail</label>
+                    <input type="email" id="contato-email" placeholder="seu@email.com" required>
+
+                    <label for="contato-cep">CEP</label>
+                    <input type="text" id="contato-cep" placeholder="00000-000" maxlength="9">
+
+                    <label for="contato-endereco">Endereço</label>
+                    <input type="text" id="contato-endereco" placeholder="Preenchido automaticamente pelo CEP">
+
+                    <label for="contato-msg">Mensagem</label>
+                    <textarea id="contato-msg" rows="4" placeholder="Escreva sua dúvida..." required></textarea>
+
+                    <button type="submit" class="button-main btn-block">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-entrar" class="page-container page-view">
+        <div class="page-header">
+            <h1>Área do Cliente</h1>
+            <h2>Acesse sua conta ou cadastre-se</h2>
+        </div>
+
+        <div class="form-box auth-box">
+            <div class="auth-tabs" id="auth-tabs">
+                <button type="button" class="auth-tab active" id="tab-login">Entrar</button>
+                <button type="button" class="auth-tab" id="tab-cadastro">Cadastrar</button>
+            </div>
+
+            <form id="form-auth">
+                <div id="grupo-nome" style="display: none;">
+                    <label for="auth-nome">Nome Completo</label>
+                    <input type="text" id="auth-nome" placeholder="Seu nome">
+                </div>
+
+                <label for="auth-email">E-mail</label>
+                <input type="email" id="auth-email" placeholder="seu@email.com" required>
+
+                <label for="auth-senha">Senha</label>
+                <input type="password" id="auth-senha" placeholder="Sua senha" required>
+
+                <button type="submit" class="button-header btn-block" id="auth-submit-btn">Entrar</button>
+            </form>
+
+            <div id="usuario-logado-box" style="display: none; text-align: center;">
+                <p id="usuario-logado-texto"></p>
+                <button type="button" class="button-main btn-block" id="btn-sair">Sair da Conta</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Kaio Pet Shop © 2026 - Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+    <script src="./script.js"></script>
 </body>
 
 </html>
